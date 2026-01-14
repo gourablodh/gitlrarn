@@ -7,17 +7,17 @@ jobs:
     deploy-dragon-on-test-env:
       runs-on: ubuntu-latest
       steps:
-          -  name: creating local repo
-             uses: actions/checkoutv5
+          - name: creating local repo
+            uses: actions/checkoutv4
 
-          -  name: install dragon tool
-             run: sudo install cowsay -y
+          - name: install dragon tool
+            run: sudo install cowsay -y
 
-    deploy-dragon-on-compilation:
-      runs-on: ubuntu-latest
-      steps:
-        - name: install cowsay
-          run: systemctl status cowsay
+          - name: test dreagon files
+            run: cat dragon.txt
+
+          - name: check file
+            run: ls -ltra
           
       
   
