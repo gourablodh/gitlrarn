@@ -1,0 +1,23 @@
+name: third workflow
+
+on:
+  workflow_dispatch
+
+jobs:
+    deploy-dragon-on-test-env:
+      runs-on: ubuntu-latest
+      steps:
+          -  name: creating local repo
+             uses: actions/checkoutv5
+
+          -  name: install dragon tool
+             run: sudo install cowsay -y
+
+    deploy-dragon-on-compilation:
+      runs-on: ubuntu-latest
+      steps:
+        - name: install cowsay
+          run: systemctl status cowsay
+          
+      
+  
