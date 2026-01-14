@@ -8,12 +8,16 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: creating repo
-        uses: action/checkout@v4
+        uses: actions/checkout@v4
 
       - name: installing cowsay
         run: sudo apt install cowsay -y
 
+      - name: waiting
+        run: sleep 15
+
   second-jobs-building:
+    needs: first-jobs-building
     runs-on: ubuntu-latest
     steps:
       - name: building cowsay
@@ -24,8 +28,12 @@ jobs:
         with:
           name: dragon.txt file
           path: ./dragon.txt
+          
+      - name: waiting
+        run: sleep 10
     
   third-jobs-deploy-prod:
+    needs: second-jobs-building
     runs-on: ubuntu-latest
     steps:
       - name: download artifacts
