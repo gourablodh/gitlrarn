@@ -1,0 +1,39 @@
+name: advance project
+
+on:
+  workflow_dispatch
+
+jobs:
+  first-jobs-building:
+    runs-on: ubuntu-latest
+    steps:
+      - name: creating repo
+        uses: action/checkout@v4
+
+      - name: installing cowsay
+        run: sudo apt install cowsay -y
+
+  second-jobs-building:
+    runs-on: ubuntu-latest
+    steps:
+      - name: building cowsay
+        run: cowsay -f "i am dragon" >> dragon.txt
+
+      - name: deploy artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: dragon.txt file
+          path: ./dragon.txt
+    
+  third-jobs-deploy-prod:
+    runs-on: ubuntu-latest
+    steps:
+      - name: download artifacts
+        uses: actions/upload-artifact@v4
+
+      - name: display dragon
+        run: cat dragon.txt
+
+
+
+
