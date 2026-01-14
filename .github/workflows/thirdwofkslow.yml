@@ -13,6 +13,10 @@ jobs:
           - name: install dragon tool
             run: sudo apt install cowsay -y
 
+          - name: building dreagon files
+            run: echo "hi i am dragon" >> dragon.txt
+
+
           - name: test dreagon files
             run: cat dragon.txt
 
