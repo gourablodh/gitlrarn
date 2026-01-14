@@ -11,7 +11,7 @@ jobs:
             uses: actions/checkout@v4
 
           - name: install dragon tool
-            run: sudo install cowsay -y
+            run: sudo apt install cowsay -y
 
           - name: test dreagon files
             run: cat dragon.txt
