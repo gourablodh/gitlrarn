@@ -1,4 +1,4 @@
-name: third workflow
+name: multiplw workflow with time sequence
 
 on:
   workflow_dispatch
@@ -14,12 +14,14 @@ jobs:
             run: sudo apt install cowsay -y
     
     deploy-dragon-on-build-env:
+      needs: deploy-dragon-on-infra-env
       runs-on: ubuntu-latest
       steps:
           - name: building dreagon files
             run: echo "hi i am dragon" >> dragon.txt
             
     deploy-dragon-on-testing-env:
+      needs: deploy-dragon-on-build-env
       runs-on: ubuntu-latest
       steps:
           - name: test dreagon files
