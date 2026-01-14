@@ -1,0 +1,24 @@
+name: second-workflow
+
+on: 
+  push:
+    branches: ["main"] 
+
+jobs:
+  second-workflow:
+    runs-on: ["ubuntu-latest"]
+
+    steps:
+        - name: create repo
+          uses: actions/checkout@v5
+
+        - name: executing command
+          run: echo "hello world"
+
+        - name: check existing file and run multiple command
+          run: |
+                ls -l
+                cat README.md
+                pwd
+                hostname
+                sudo lsblk
